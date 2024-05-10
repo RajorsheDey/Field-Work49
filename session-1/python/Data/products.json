@@ -1,0 +1,17 @@
+[
+    {
+        "Name ": "x",
+        "Price ": "10",
+        "Quantity": "180"
+    },
+    {
+        "Name ": "y",
+        "Price ": "15",
+        "Quantity": "150"
+    },
+    {
+        "Name ": "z",
+        "Price ": "20",
+        "Quantity": "100"
+    }
+]
