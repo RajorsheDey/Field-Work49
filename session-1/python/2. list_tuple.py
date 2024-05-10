@@ -72,8 +72,28 @@ list_length = len(simple_list)
 
 # Assignment 1: Create a 2D list representing a 3x3 matrix and perform operations like accessing, modifying, and iterating through it.
 # Write your code below:
+# Create a 3x3 matrix (2D list)
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
 
 
+print("Accessing Matrix: ", matrix[1][2])
+
+
+matrix[0][0] = 10
+print("Modified matrix:", matrix)
+
+
+print("Iterating the matrix:")
+for row in matrix:
+    for element in row:
+        print(element, end=" ")
+    print()
+    
 # Section 2: Python Tuples
 # ------------------------
 # Tuples are ordered collections like lists but are immutable (cannot be changed after creation).
@@ -96,7 +116,19 @@ tuple_dict = {simple_tuple: "My Tuple"}
 # Assignment 2: Create a tuple with mixed data types and demonstrate its potential use cases in data structures like dictionaries.
 # Write your code below:
 
+mixed_tuple = ("Rajorshe", 24, "Chittagong", "problem-solving ")
 
+person_dict = {
+    "name": mixed_tuple[0],
+    "age": mixed_tuple[1],
+    "location": mixed_tuple[2],
+    "skills": mixed_tuple[3]
+}
+
+print("Name:", person_dict["name"])
+print("Age:", person_dict["age"])
+print("Location:", person_dict["location"])
+print("Skills:", person_dict["skills"])
 # Section 3: Advanced Applications
 # --------------------------------
 # Dealing with more complex list and tuple structures for real-world applications.
@@ -115,6 +147,19 @@ incremented_matrix = [[cell + 1 for cell in row] for row in matrix]
 
 # Assignment 3: Create a list of tuples, where each tuple contains a student's name and their grade. Sort this list by grades.
 # Write your code below:
+
+student_grades = [
+    ("Rajorshe", 99),
+    ("Fahim", 85),
+    ("Sakib", 50),
+    ("Noman", 68),
+    ("Saed", 65)
+]
+
+
+sorted_grades = sorted(student_grades, key=lambda x: x[1])
+
+print("Sorted Grade: ",sorted_grades)
 
 
 # Congratulations on completing the advanced section on Python lists and tuples!
