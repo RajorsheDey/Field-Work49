@@ -28,11 +28,11 @@ y = "Hello, Python learners!"
 
 # Assignment 1: Create two variables, one holding a number and the other holding your name. Then print both.
 # Write your code below:
-age = 22
-name = "Ibrahim bin Karim"
+age = 24
+name = "Rajorshe Dey"
 
-# print("Age: ", age, end="; ")
-# print("Name: ", name)
+print("Age: ", age, )
+print("Name: ", name)
 
 # Section 2: Data Types
 # ---------------------
