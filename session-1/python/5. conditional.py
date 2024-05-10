@@ -115,7 +115,38 @@ print(f"Ticket price: ${price}")
 # Assignment 3: Write a script that simulates a basic login system. Check username and password correctness.
 # Write your code below:
 
+# User database (for demonstration purposes)
+user_database = {
+    "Rajorshe": "pass123",
+    "Fahim": "123789",
+    "Sakib": "pass789"
+}
 
+def login():
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+
+    # Check if username exists and password matches
+    if username in user_database and user_database[username] == password:
+        print("Login successful! Welcome,", username)
+    else:
+        print("Invalid username or password. Please try again.")
+
+# Main function
+def main():
+    print("Welcome to the basic login system!")
+    while True:
+        choice = input("Enter 'login' to log in or 'quit' to exit: ")
+        if choice.lower() == 'login':
+            login()
+        elif choice.lower() == 'quit':
+            print("Exiting the program. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
 
 # Example 7: Loan Approval System
 # This example uses multiple conditions to determine if an applicant qualifies for a personal loan.
