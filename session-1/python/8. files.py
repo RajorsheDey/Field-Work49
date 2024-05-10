@@ -90,6 +90,7 @@ with open('users.json', 'r') as file:
 # Assignments
 # -----------
 # Assignment 1: Write a script that reads a CSV file containing product information and converts it into a JSON file.
+
 # Assignment 2: Create a log file writer that appends log messages to a file with timestamps.
 
 # Congratulations on completing the comprehensive section on Python file I/O and JSON handling!

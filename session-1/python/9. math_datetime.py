@@ -71,6 +71,21 @@ print(f"Age is: {age} years")
 # Assignments
 # -----------
 # Assignment 1: Write a function that calculates compound interest using the formula A = P(1 + r/n)^(nt).
+
+def compound_interest(P, r, n, t):
+
+    A = P * (1 + r/n)**(n*t)
+    return A
+
+
+principal = 1000  
+rate = 0.05       
+times_compounded = 12  
+years = 5        
+
+result = compound_interest(principal, rate, times_compounded, years)
+print("Compound Interest after {} years: {:.2f}".format(years, result))
+
 # Assignment 2: Create a script that prints the current time and updates every second.
 
 # Congratulations on completing the in-depth section on Python's math and datetime modules!
