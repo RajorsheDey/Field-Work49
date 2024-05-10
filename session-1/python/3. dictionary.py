@@ -63,6 +63,30 @@ print("Dictionary Copy: ", dict_copy)
 # Perform various operations like adding, removing, and modifying elements.
 # Write your code below:
 
+student_info = {
+    "Name": "RajorsheDey",
+    "ID": "C193008",
+    "Semester": "8th",
+    "grades": {
+        "Machine learning": 85,
+        "Math": 90,
+        "Computer Networking": 75,
+        "Computer Programming": 80
+    }
+}
+print("Student information:", student_info)
+
+student_info["grades"]["Advanced English"] = 80
+
+
+print("Update Student Information:", student_info)
+
+
+student_info["grades"]["Math"] = 92
+print("After Modifying Student Information:", student_info)
+
+del student_info["grades"]["Computer Networking"]
+print("After Delete Student Information:", student_info)
 
 # Section 2: Integrating Dictionaries with Lists and Tuples
 # ---------------------------------------------------------
@@ -86,6 +110,21 @@ coordinates_info = {(35.6895, 139.6917): "Tokyo", (40.7128, -74.0060): "New York
 # Assignment 2: Create a dictionary where keys are student names and values are lists of grades. Calculate the average grade for each student.
 # Write your code below:
 
+student_grades = {
+    "Rajorshe": [95, 90, 92],
+    "Sultan": [88,78, 88],
+    "Fahim": [80, 49, 57],
+    "Sakib": [67, 75, 88]
+}
+
+# Calculate the average grade for each student
+average_grades = {}
+for student, grades in student_grades.items():
+    average_grade = sum(grades) / len(grades)
+    average_grades[student] = average_grade
+
+
+print("Average grades for student:",average_grades)
 
 # Congratulations on completing the advanced section on Python dictionaries!
 # Review the assignments, try to solve them, and check your understanding of this powerful data structure.
