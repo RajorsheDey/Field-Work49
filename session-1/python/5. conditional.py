@@ -47,6 +47,14 @@ else:
 # Assignment 1: Write a Python script that determines if a number is positive, negative, or zero using if-elif-else.
 # Write your code below:
 
+number = float(input("Enter a number: "))
+if number > 0:
+    print("The number is positive.")
+elif number < 0:
+    print("The number is negative.")
+else:
+    print("The number is zero.")
+
 
 # Section 2: Logical and Boolean Operations
 # -----------------------------------------
@@ -70,6 +78,17 @@ else:
 # Assignment 2: Create a script that checks if a person is eligible for a senior citizen discount based on age and residency.
 # Write your code below:
 
+senior_age = 40
+residency = "Bangladesh"
+
+
+age = int(input("Enter your age: "))
+country = input("Enter your country of residency: ")
+
+if age >= senior_age and country == residency:
+    print("Congratulations! You are eligible for a senior citizen discount.")
+else:
+    print("Sorry, you are not eligible for a senior citizen discount.")
 
 # Section 3: Real-World Applications
 # -----------------------------------
