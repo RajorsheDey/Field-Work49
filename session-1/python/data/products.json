@@ -1,17 +1,17 @@
 [
     {
-        "Name ": "Cake",
-        "Price ": "10",
+        "Name ": "Burger",
+        "Price ": "100",
         "Quantity": "100"
     },
     {
-        "Name ": "juice",
-        "Price ": "25",
+        "Name ": "pizza",
+        "Price ": "120",
         "Quantity": "500"
     },
     {
-        "Name ": "Chips",
-        "Price ": "15",
+        "Name ": "Mojo",
+        "Price ": "20",
         "Quantity": "300"
     }
 ]
