@@ -45,10 +45,10 @@ c = "Python"        # str
 d = True            # bool
 
 # You can check the type of any variable by using the type() function.
-# print(type(a))
-# print(type(b))
-# print(type(c))
-# print(type(d))
+print(type(a))
+print(type(b))
+print(type(c))
+print(type(d))
 
 # Assignment 2: Create variables of different types and use the type() function to check their types.
 # Write your code below:
@@ -74,7 +74,18 @@ _bad_name = 23
 # Assignment 3: Fix the bad variable name above and create three more variables with good naming practices.
 # Write your code below:
 
+age = 23
+first_name = "Rajorshe"
+middle_name = "Dey"
+last_name = "Moon"
+gender = "male"
 
+
+print(age)
+print(first_name)
+print(middle_name)
+print(last_name)
+print(gender)
 # Section 4: Python's Dynamic Typing
 # ----------------------------------
 # Python is dynamically typed, which means you don’t have to declare the type of variable while declaring it.
@@ -91,6 +102,12 @@ print(var)
 # Assignment 4: Create a variable, assign it a value of one type, then reassign it to a different type and print both.
 # Write your code below:
 
+variable = 3008
+print("Initial value:", variable)
+
+# Reassigning it to a different type
+variable = "Hello, bangladesh!"
+print("Reassigned value:", variable)
 
 # Congratulations on completing this part of the Python workshop!
 # Review the assignments, try to solve them, and check your understanding of variables and data types.
