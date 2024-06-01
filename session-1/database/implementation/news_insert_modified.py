@@ -56,7 +56,7 @@ def insert_category(connection, name, description):
     data = (name, description)
     execute_query(connection, query, data)
 
-def insert_reporters(connection, name, email):
+def insert_reporter(connection, name, email):
     """
     Inserts a new reporter into the reporters table.
 
@@ -104,20 +104,19 @@ def insert_publisher(connection, name, email, phone_number, head_office_address,
     data = (name, email, phone_number, head_office_address, website, facebook, twitter, linkedin, instagram)
     execute_query(connection, query, data)
 
-def insert_news(connection, category_id, author_id, editor_id, datetime, title, body, link):
+def insert_news(connection, category_id, reporter_id, publisher_id, datetime, title, body, link):
     """
     Inserts a new news article into the news table.
-
     Parameters
     ----------
     connection : mysql.connector.connection.MySQLConnection
         The connection object to the database.
     category_id : int
         The ID of the category.
-    author_id : int
-        The ID of the author.
-    editor_id : int
-        The ID of the editor.
+    reporter_id : int
+        The ID of the reporter.
+    publisher_id : int
+        The ID of the publisher.
     datetime : datetime
         The publication date and time of the news article.
     title : str
@@ -132,10 +131,10 @@ def insert_news(connection, category_id, author_id, editor_id, datetime, title, 
     None
     """
     query = """
-    INSERT INTO news (category_id, author_id, editor_id, datetime, title, body, link)
+    INSERT INTO news (category_id, reporter_id, publisher_id, datetime, title, body, link)
     VALUES (%s, %s, %s, %s, %s, %s, %s)
     """
-    data = (category_id, author_id, editor_id, datetime, title, body, link)
+    data = (category_id, reporter_id, publisher_id, datetime, title, body, link)
     execute_query(connection, query, data)
 
 def insert_image(connection, news_id, image_url):
@@ -191,48 +190,22 @@ if __name__ == "__main__":
     conn = create_db_connection()
     if conn is not None:
         insert_category(conn, "Politics", "All news related to politics")
-        insert_reporters(conn, "khaled", "khaled@example.com")
-        Add more insert calls for other tables
-        reporters = [
-            ("Khaled Ibn Delowar", "khaled@gmail.com"),
-            ("Jane Smith", "jane@example.com"),
-            ("Bob Johnson", "bob@example.com")
+        insert_reporter(conn, "John Doe", "test@example.com")
+
+  # Add more insert calls for other tables
+       
+        insert_category(conn, "Sports", "All news related to sports")
+        insert_reporter(conn, "John Sam", "john@example.com")
+
+        insert_publisher(conn, "Prothom Alo", "p_alo@gmail.com", 1234567890, "Dhaka, Bangladesh", "prothomalo.com", "facebook.com/prothomalo", "twitter.com/prothomalo", "linkedin.com/prothomalo", "instagram.com/prothomalo")
+        insert_publisher(conn, "Daily Star", "d_star@gmail.com", 1234567891, "Dhaka, Bangladesh", "dailystar.com.bd", "facebook.com/dailystar", "twitter.com/dailystar", "linkedin.com/dailystar", "instagram.com/dailystar")
+
+        insert_news(conn, 1, 1, 1, "2022-01-01 00:00:00", "Test News Article 1", "This is the body of the first news article.", "https://example.com/news-article-1")
+        insert_news(conn, 2, 2, 2, "2022-01-02 00:00:00", "Test News Article 2", "This is the body of the second news article.", "https://example.com/news-article-2")
+
+        insert_image(conn, 1, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
+        insert_image(conn, 2, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
+
+        insert_summary(conn, 1, "This is the summary of Messi's Career: Penalty & tap in; the end ")
+        insert_summary(conn, 1, "This is the summary of Ronaldo's Career: Penalty & tap in; the end ")
       
-        ]
-        for reporter in reporters:
-            insert_reporters(conn, *reporter)
-        publishers_data = [
-            ("Publisher 1", "publisher1@example.com", "1234567890", "123 Main St", "http://publisher1.com", "publisher1_fb", "publisher1_twitter", "publisher1_linkedin", "publisher1_instagram"),
-            ("Publisher 2", "publisher2@example.com", "0987654321", "456 Oak St", "http://publisher2.com", "publisher2_fb", "publisher2_twitter", "publisher2_linkedin", "publisher2_instagram"),
-            
-        ]
-        for publisher_data in publishers_data:
-            insert_publisher(conn, *publisher_data)
-
-        news_data = [
-    (1, 1, 1, "2024-05-16", "News title 1", "Body text for news article 1", "https://example.com/news1"),
-    (2, 1, 2, "2024-05-17", "News title 2", "Body text for news article 2", "https://example.com/news2"),
-    (3, 2, 1, "2024-05-18", "News title 3", "Body text for news article 3", "https://example.com/news3"),
-  
-]
-        for news_item in news_data:
-            insert_news(conn, *news_item)
-
- 
-        images_data = [
-            (1, "https://example.com/image1.jpg"),
-            (2, "https://example.com/image2.jpg"),
-            (3, "https://example.com/image3.jpg"),
-
-        ]
-        for image_data in images_data:
-            insert_image(conn, *image_data)
-        Example usage to insert multiple summaries
-        summaries_data = [
-            (1, "Summary text for news article 1"),
-            (2, "Summary text for news article 2"),
-            (3, "Summary text for news article 3"),
-            # Add more tuples as needed
-        ]
-        for summary_data in summaries_data:
-            insert_summary(conn, *summary_data)

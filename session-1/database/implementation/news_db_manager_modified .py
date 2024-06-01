@@ -82,7 +82,14 @@ def create_tables(connection):
     CREATE TABLE IF NOT EXISTS publishers (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) UNIQUE NOT NULL
+        email VARCHAR(255) UNIQUE NOT NULL,
+        phone_number VARCHAR(255) UNIQUE NOT NULL,
+        head_office_address VARCHAR(255) NOT NULL,
+        website VARCHAR(255) UNIQUE NOT NULL,
+        facebook VARCHAR(255) UNIQUE NOT NULL,
+        twitter VARCHAR(255) UNIQUE NOT NULL,
+        linkedin VARCHAR(255) UNIQUE NOT NULL,
+        instagram VARCHAR(255) UNIQUE NOT NULL
     );
     """
     create_news_table = """
@@ -137,3 +144,4 @@ if __name__ == "__main__":
         #  read_reporters_query = "SELECT * FROM reporters"
         #  news_reporters = execute_read_query(conn, read_reporters_query)
         #  print(news_reporters)
+

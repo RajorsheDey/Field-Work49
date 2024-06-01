@@ -1,32 +1,8 @@
 import os
 import mysql.connector
 from mysql.connector import Error
-from dotenv import load_dotenv
+from db_connection import create_db_connection
 
-# Load environment variables
-load_dotenv()
-
-def create_db_connection():
-    """
-    Create a database connection to the MySQL database specified by the db_name.
-
-    Returns
-    -------
-    connection : mysql.connector.connection.MySQLConnection
-        The connection object to the database.
-    """
-    try:
-        connection = mysql.connector.connect(
-            host=os.getenv("DB_HOST"),
-            user=os.getenv("DB_USER"),
-            passwd=os.getenv("DB_PASS"),
-            database=os.getenv("DB_NAME")
-        )
-        print("MySQL Database connection successful")
-        return connection
-    except Error as e:
-        print(f"The error '{e}' occurred")
-        return None
 
 def execute_query(connection, query, data=None):
     """
@@ -80,68 +56,67 @@ def insert_category(connection, name, description):
     data = (name, description)
     execute_query(connection, query, data)
 
-def insert_author(connection, name, email):
+def insert_reporter(connection, name, email):
     """
-    Inserts a new author into the authors table.
+    Inserts a new reporter into the reporters table.
 
     Parameters
     ----------
     connection : mysql.connector.connection.MySQLConnection
         The connection object to the database.
     name : str
-        The name of the author.
+        The name of the reporter.
     email : str
-        The email of the author.
+        The email of the reporter.
 
     Returns
     -------
     None
     """
     query = """
-    INSERT INTO authors (name, email)
+    INSERT INTO reporters (name, email)
     VALUES (%s, %s)
     """
     data = (name, email)
     execute_query(connection, query, data)
 
-def insert_editor(connection, name, email):
+def insert_publisher(connection, name, email):
     """
-    Inserts a new editor into the editors table.
+    Inserts a new publisher into the publishers table.
 
     Parameters
     ----------
     connection : mysql.connector.connection.MySQLConnection
         The connection object to the database.
     name : str
-        The name of the editor.
+        The name of the publisher.
     email : str
-        The email of the editor.
+        The email of the publisher.
 
     Returns
     -------
     None
     """
     query = """
-    INSERT INTO editors (name, email)
+    INSERT INTO publishers (name, email)
     VALUES (%s, %s)
     """
     data = (name, email)
     execute_query(connection, query, data)
 
-def insert_news(connection, category_id, author_id, editor_id, datetime, title, body, link):
+def insert_news(connection, category_id, reporter_id, publisher_id, datetime, title, body, link):
     """
     Inserts a new news article into the news table.
-
     Parameters
     ----------
     connection : mysql.connector.connection.MySQLConnection
         The connection object to the database.
     category_id : int
         The ID of the category.
-    author_id : int
-        The ID of the author.
-    editor_id : int
-        The ID of the editor.
+    reporter_id : int
+        The ID of the reporter.
+    publisher_id : int
+        The ID of the publisher.
     datetime : datetime
         The publication date and time of the news article.
     title : str
@@ -156,10 +131,10 @@ def insert_news(connection, category_id, author_id, editor_id, datetime, title, 
     None
     """
     query = """
-    INSERT INTO news (category_id, author_id, editor_id, datetime, title, body, link)
+    INSERT INTO news (category_id, reporter_id, publisher_id, datetime, title, body, link)
     VALUES (%s, %s, %s, %s, %s, %s, %s)
     """
-    data = (category_id, author_id, editor_id, datetime, title, body, link)
+    data = (category_id, reporter_id, publisher_id, datetime, title, body, link)
     execute_query(connection, query, data)
 
 def insert_image(connection, news_id, image_url):
@@ -214,6 +189,23 @@ def insert_summary(connection, news_id, summary_text):
 if __name__ == "__main__":
     conn = create_db_connection()
     if conn is not None:
-        insert_category(conn, "Politics", "All news related to politics")
-        insert_author(conn, "John Doe", "test@example.com")
-        # Add more insert calls for other tables
+        insert_category(conn, "Desh & Manush", "All news related to politics")
+        insert_reporter(conn, "Kazi Masud", "kazi@example.com")
+
+  # Add more insert calls for other tables
+       
+        insert_category(conn, "Cricket", "All Kinds of News")
+        insert_reporter(conn, "Fahim CHW", "fahim@gmail.com")
+
+        insert_publisher(conn, "Azadi", "azadi@gmail.com")
+        insert_publisher(conn, "Daily Star", "daily.star@gmail.com")
+
+        insert_news(conn, 1, 1, 1, "2022-01-01 00:00:00", "Test News Article 1", "This is the body of the first news article.", "https://example.com/news-article-1")
+        insert_news(conn, 2, 2, 2, "2022-01-02 00:00:00", "Test News Article 2", "This is the body of the second news article.", "https://example.com/news-article-2")
+
+        insert_image(conn, 1, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
+        insert_image(conn, 2, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
+
+        insert_summary(conn, 1, "Shakib’s talent and two sides of Bangladesh cricket's coin:  tap in; the end ")
+        insert_summary(conn, 1, "Skipper Marsh fit for Australia's World Cup opener, but will not bowl:  tap in; the end ")
+      
