@@ -11,28 +11,28 @@ news = {
         "id": 1,
         "title": "Top 10 programming languages",
         "content": "Python is the most popular programming language according to the TIOBE index. Other popular",
-        "author": "Arman"
+        "author": "Fahim"
     },
     2:
     {
         "id": 2,
         "title": "LLM race in modern era",
         "content": "Content on modern LLM models both close & open source",
-        "author": "Ibrahim"
+        "author": "Sultan"
     },
     3:
     {
         "id": 3,
         "title": "Latest LLM models from Mistral!!!",
         "content": "ontent on modern LLM models both close & oper",
-        "author": "Borhan"
+        "author": "Rajorshe"
     },
     4:
     {
         "id": 4,
         "title": "What's the Google calls on LLM!!",
         "content": "ontent on modern LLM models both close & ope",
-        "author": "Borhan"
+        "author": "Rajorshe"
     },
 }
 
